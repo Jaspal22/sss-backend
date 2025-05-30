@@ -2,10 +2,10 @@ import classS from "../../models/classModel.js";
 import ptStudentMark from "../../models/ptStudentMarkModel.js";
 
 const ptMarksAdd = (req, res) => {
-    const { studentName, marksScored , totalMarks, className , CI , GrandTotal, Percentage } = req.body;
+    const { studentName, marksScored , totalMarks, className, subjects , CI , GrandTotal, Percentage } = req.body;
 
     // Validate required fields
-    if ( !studentName || !className) {
+    if ( !studentName || !className || !subjects) {
         return res.status(400).json({
             message: "All fields are required"
         });
@@ -18,6 +18,7 @@ const ptMarksAdd = (req, res) => {
         className,
         CI,
         GrandTotal,
+        subjects,
         Percentage,
         totalMarks, // Save the subject count
     });
